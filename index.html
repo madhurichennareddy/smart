@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Academy</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      height: 100%;
+      background-color: #0f172a;
+      color: #f1f5f9;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .app-container {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-section {
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 800;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      opacity: 0.85;
+      margin: 0 0 32px 0;
+    }
+
+    .start-button {
+      padding: 16px 48px;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+
+    .start-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .stats-bar {
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      border-top: 2px solid #3b82f6;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+      color: #3b82f6;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .content-section {
+      flex: 1;
+      padding: 40px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 32px 0;
+      text-align: center;
+    }
+
+    .lessons-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .lesson-box {
+      border-radius: 16px;
+      padding: 32px 24px;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      text-align: center;
+      border: 3px solid transparent;
+      background-color: #1e293b;
+    }
+
+    .lesson-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .lesson-emoji {
+      font-size: 56px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .lesson-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .lesson-info {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+
+    .lesson-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 100;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    .lesson-panel {
+      max-width: 700px;
+      margin: 40px auto;
+      border-radius: 20px;
+      padding: 40px;
+      position: relative;
+      background-color: #1e293b;
+      color: #f1f5f9;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      font-size: 28px;
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1;
+      background-color: rgba(241, 245, 249, 0.15);
+      color: #f1f5f9;
+    }
+
+    .close-btn:hover {
+      transform: rotate(90deg);
+    }
+
+    .panel-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0 0 24px 0;
+    }
+
+    .content-block {
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .content-heading {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+    }
+
+    .content-text {
+      font-size: 16px;
+      margin: 0 0 16px 0;
+    }
+
+    .code-display {
+      padding: 20px;
+      border-radius: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      line-height: 1.6;
+      margin: 16px 0;
+      background-color: #1e293b;
+      border: 2px solid rgba(241, 245, 249, 0.15);
+    }
+
+    .quiz-area {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 3px solid #3b82f6;
+    }
+
+    .quiz-header {
+      font-size: 26px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .question-box {
+      margin-bottom: 32px;
+      padding: 28px;
+      border-radius: 16px;
+      background-color: #1e293b;
+    }
+
+    .question-label {
+      font-size: 12px;
+      font-weight: 700;
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+
+    .question-prompt {
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .answer-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .answer-option {
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 3px solid rgba(241, 245, 249, 0.3);
+      font-size: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+      background: rgba(241, 245, 249, 0.05);
+      color: #f1f5f9;
+    }
+
+    .answer-option:hover {
+      transform: translateX(8px);
+    }
+
+    .answer-option.picked {
+      border-width: 4px;
+      border-color: #3b82f6;
+    }
+
+    .answer-option:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .answer-option.right {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.15);
+    }
+
+    .answer-option.wrong {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    .result-msg {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      display: none;
+    }
+
+    .result-msg.show {
+      display: block;
+    }
+
+    .result-msg.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid #10b981;
+      color: #10b981;
+    }
+
+    .result-msg.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 2px solid #ef4444;
+      color: #ef4444;
+    }
+
+    .submit-area {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .submit-btn {
+      padding: 16px 56px;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .final-results {
+      text-align: center;
+      padding: 48px 24px;
+    }
+
+    .final-emoji {
+      font-size: 80px;
+      margin-bottom: 24px;
+    }
+
+    .final-score {
+      font-size: 64px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #3b82f6;
+    }
+
+    .final-message {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .final-details {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 40px;
+    }
+
+    .done-btn {
+      padding: 16px 48px;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+
+    .done-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .lessons-container {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-bar {
+        gap: 24px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="app-container">
+   <section class="hero-section" id="heroSection">
+    <h1 class="hero-title" id="heroTitle">Learning Academy</h1>
+    <p class="hero-subtitle" id="heroSubtitle">Unlock your potential with interactive courses</p><button class="start-button" id="startButton">Start Learning</button>
+   </section>
+   <div class="stats-bar" id="statsBar">
+    <div class="stat-item"><span class="stat-number" id="completedStat">0</span> <span class="stat-label">Completed</span>
+    </div>
+    <div class="stat-item"><span class="stat-number" id="scoreStat">0%</span> <span class="stat-label">Avg Score</span>
+    </div>
+    <div class="stat-item"><span class="stat-number" id="totalStat">6</span> <span class="stat-label">Total Lessons</span>
+    </div>
+   </div>
+   <section class="content-section">
+    <h2 class="section-title" id="sectionTitle">📚 Choose Your Course</h2>
+    <div class="lessons-container" id="lessonsContainer"></div>
+   </section>
+  </div>
+  <div class="overlay" id="overlay">
+   <div class="lesson-panel" id="lessonPanel"><button class="close-btn" id="closeBtn">×</button>
+    <div id="panelContent"></div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#0f172a",
+      surface_color: "#1e293b",
+      text_color: "#f1f5f9",
+      primary_action_color: "#3b82f6",
+      secondary_action_color: "#8b5cf6",
+      main_title: "Learning Academy",
+      subtitle: "Unlock your potential with interactive courses",
+      cta_button: "Start Learning",
+      font_family: "inherit",
+      font_size: 16
+    };
+
+    const courses = [
+      {
+        id: "web-basics",
+        name: "Web Development Basics",
+        emoji: "🌐",
+        duration: "10 min",
+        level: "Beginner",
+        content: [
+          {
+            heading: "What is Web Development?",
+            text: "Web development is the process of creating websites and web applications. It combines design, programming, and problem-solving to build experiences on the internet."
+          },
+          {
+            heading: "The Three Pillars",
+            text: "Every website is built with three core technologies: HTML for structure, CSS for styling, and JavaScript for interactivity. Together, they create the web as we know it."
+          },
+          {
+            heading: "Example Structure",
+            code: "<html>\n  <head>\n    <title>My Site</title>\n  </head>\n  <body>\n    <h1>Hello World!</h1>\n  </body>\n</html>"
+          }
+        ],
+        questions: [
+          {
+            prompt: "What language provides the structure of a webpage?",
+            choices: ["CSS", "JavaScript", "HTML", "Python"],
+            answer: 2
+          },
+          {
+            prompt: "What does CSS stand for?",
+            choices: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Code Style Syntax"],
+            answer: 1
+          }
+        ]
+      },
+      {
+        id: "javascript-intro",
+        name: "JavaScript Fundamentals",
+        emoji: "⚡",
+        duration: "15 min",
+        level: "Beginner",
+        content: [
+          {
+            heading: "Why JavaScript?",
+            text: "JavaScript is the programming language of the web. It powers interactive features, handles user input, and makes websites dynamic and engaging."
+          },
+          {
+            heading: "Variables and Data",
+            text: "You can store information in variables using let, const, or var. Variables hold different types of data like numbers, text strings, or boolean true/false values."
+          },
+          {
+            heading: "Simple Example",
+            code: "let userName = 'Alex';\nlet userAge = 28;\nconst isActive = true;\n\nconsole.log('User:', userName);"
+          }
+        ],
+        questions: [
+          {
+            prompt: "Which keyword creates a constant variable?",
+            choices: ["let", "const", "var", "static"],
+            answer: 1
+          },
+          {
+            prompt: "What type is the value 42?",
+            choices: ["String", "Number", "Boolean", "Array"],
+            answer: 1
+          }
+        ]
+      },
+      {
+        id: "css-design",
+        name: "CSS Design Principles",
+        emoji: "🎨",
+        duration: "12 min",
+        level: "Beginner",
+        content: [
+          {
+            heading: "Styling with CSS",
+            text: "CSS (Cascading Style Sheets) controls how HTML elements look. You can change colors, fonts, spacing, layouts, and create beautiful designs."
+          },
+          {
+            heading: "Selectors",
+            text: "CSS selectors target HTML elements. You can select by tag name, class (.classname), or ID (#idname) to apply specific styles."
+          },
+          {
+            heading: "Basic Styles",
+            code: ".heading {\n  color: blue;\n  font-size: 24px;\n  font-weight: bold;\n}\n\n#logo {\n  width: 100px;\n}"
+          }
+        ],
+        questions: [
+          {
+            prompt: "How do you select an element with class 'button'?",
+            choices: ["#button", ".button", "button", "*button"],
+            answer: 1
+          },
+          {
+            prompt: "Which property changes background color?",
+            choices: ["color", "bg-color", "background-color", "background"],
+            answer: 2
+          }
+        ]
+      },
+      {
+        id: "functions",
+        name: "Functions & Logic",
+        emoji: "🔧",
+        duration: "18 min",
+        level: "Intermediate",
+        content: [
+          {
+            heading: "What are Functions?",
+            text: "Functions are reusable blocks of code that perform specific tasks. They help organize your code, avoid repetition, and make programs more maintainable."
+          },
+          {
+            heading: "Creating Functions",
+            text: "Functions can accept inputs (parameters) and return outputs (return values). You can call them multiple times with different inputs."
+          },
+          {
+            heading: "Function Examples",
+            code: "function greet(name) {\n  return 'Hello, ' + name;\n}\n\nconst result = greet('Sam');\nconsole.log(result);"
+          }
+        ],
+        questions: [
+          {
+            prompt: "What keyword creates a function?",
+            choices: ["func", "function", "def", "create"],
+            answer: 1
+          },
+          {
+            prompt: "What does 'return' do?",
+            choices: ["Stops the program", "Restarts the function", "Sends back a value", "Creates a loop"],
+            answer: 2
+          }
+        ]
+      },
+      {
+        id: "arrays",
+        name: "Arrays & Iteration",
+        emoji: "📊",
+        duration: "16 min",
+        level: "Intermediate",
+        content: [
+          {
+            heading: "Understanding Arrays",
+            text: "Arrays store multiple values in a single variable. They're ordered lists where each item has an index number starting from 0."
+          },
+          {
+            heading: "Looping Through Arrays",
+            text: "Loops let you perform actions on each item in an array. Common methods include for loops, forEach, and map."
+          },
+          {
+            heading: "Array Example",
+            code: "const colors = ['red', 'blue', 'green'];\n\ncolors.forEach(color => {\n  console.log(color);\n});"
+          }
+        ],
+        questions: [
+          {
+            prompt: "How do you access the first item in an array?",
+            choices: ["array[1]", "array[0]", "array.first", "array.start"],
+            answer: 1
+          },
+          {
+            prompt: "What does forEach do?",
+            choices: ["Sorts the array", "Removes items", "Runs code for each item", "Reverses the array"],
+            answer: 2
+          }
+        ]
+      },
+      {
+        id: "async",
+        name: "Async Programming",
+        emoji: "⏰",
+        duration: "20 min",
+        level: "Advanced",
+        content: [
+          {
+            heading: "Asynchronous Code",
+            text: "Async programming allows your code to handle tasks that take time (like loading data) without blocking other operations from running."
+          },
+          {
+            heading: "Promises & Async/Await",
+            text: "Promises represent future values. The async/await syntax makes async code easier to read and write, looking similar to regular synchronous code."
+          },
+          {
+            heading: "Async Example",
+            code: "async function loadData() {\n  const response = await fetch(url);\n  const data = await response.json();\n  return data;\n}"
+          }
+        ],
+        questions: [
+          {
+            prompt: "What does 'await' do?",
+            choices: ["Pauses for 1 second", "Waits for a promise", "Stops the program", "Creates a delay"],
+            answer: 1
+          },
+          {
+            prompt: "Where can 'await' be used?",
+            choices: ["Anywhere", "Only in async functions", "Only in loops", "Only in classes"],
+            answer: 1
+          }
+        ]
+      }
+    ];
+
+    let progressData = [];
+    let activeLesson = null;
+    let userAnswers = [];
+
+    const dataHandler = {
+      onDataChanged(data) {
+        progressData = data;
+        updateStats();
+        renderCourses();
+      }
+    };
+
+    async function onConfigChange(config) {
+      const bg = config.background_color || defaultConfig.background_color;
+      const surface = config.surface_color || defaultConfig.surface_color;
+      const text = config.text_color || defaultConfig.text_color;
+      const primary = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondary = config.secondary_action_color || defaultConfig.secondary_action_color;
+      const font = config.font_family || defaultConfig.font_family;
+      const size = config.font_size || defaultConfig.font_size;
+      const fontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+
+      document.body.style.backgroundColor = bg;
+      document.body.style.color = text;
+      document.body.style.fontFamily = `${font}, ${fontStack}`;
+      document.body.style.fontSize = `${size}px`;
+
+      document.getElementById('heroTitle').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('heroTitle').style.fontSize = `${size * 3}px`;
+
+      document.getElementById('heroSubtitle').textContent = config.subtitle || defaultConfig.subtitle;
+      document.getElementById('heroSubtitle').style.fontSize = `${size * 1.25}px`;
+
+      document.getElementById('startButton').textContent = config.cta_button || defaultConfig.cta_button;
+      document.getElementById('startButton').style.fontSize = `${size * 1.13}px`;
+      document.getElementById('startButton').style.backgroundColor = primary;
+      document.getElementById('startButton').style.color = '#ffffff';
+
+      document.getElementById('sectionTitle').style.fontSize = `${size * 1.75}px`;
+
+      document.getElementById('statsBar').style.borderTopColor = primary;
+
+      const statNumbers = document.querySelectorAll('.stat-number');
+      statNumbers.forEach(el => {
+        el.style.color = primary;
+        el.style.fontSize = `${size * 2}px`;
+      });
+
+      const statLabels = document.querySelectorAll('.stat-label');
+      statLabels.forEach(el => {
+        el.style.fontSize = `${size * 0.88}px`;
+      });
+
+      document.getElementById('lessonPanel').style.backgroundColor = surface;
+
+      const closeBtn = document.getElementById('closeBtn');
+      closeBtn.style.backgroundColor = `${text}15`;
+      closeBtn.style.color = text;
+
+      renderCourses();
+    }
+
+    function updateStats() {
+      const completed = progressData.filter(p => p.completed).length;
+      document.getElementById('completedStat').textContent = completed;
+
+      const withScores = progressData.filter(p => p.completed && p.score != null);
+      const avgScore = withScores.length > 0
+        ? Math.round(withScores.reduce((sum, p) => sum + p.score, 0) / withScores.length)
+        : 0;
+      document.getElementById('scoreStat').textContent = `${avgScore}%`;
+    }
+
+    function renderCourses() {
+      const config = window.elementSdk?.config || defaultConfig;
+      const container = document.getElementById('lessonsContainer');
+      const surface = config.surface_color || defaultConfig.surface_color;
+      const text = config.text_color || defaultConfig.text_color;
+      const primary = config.primary_action_color || defaultConfig.primary_action_color;
+      const size = config.font_size || defaultConfig.font_size;
+
+      container.innerHTML = '';
+
+      courses.forEach(course => {
+        const progress = progressData.find(p => p.lesson_id === course.id);
+        const isDone = progress?.completed || false;
+
+        const box = document.createElement('div');
+        box.className = 'lesson-box';
+        box.style.backgroundColor = surface;
+        box.style.color = text;
+
+        const levelColors = {
+          'Beginner': '#10b981',
+          'Intermediate': '#f59e0b',
+          'Advanced': '#ef4444'
+        };
+
+        box.innerHTML = `
+          <span class="lesson-emoji">${course.emoji}</span>
+          <div class="lesson-name" style="font-size: ${size * 1.38}px;">${course.name}</div>
+          <div class="lesson-info" style="font-size: ${size * 0.88}px;">${course.duration} • ${course.level}</div>
+          <span class="lesson-badge" style="background: ${isDone ? '#10b98125' : `${text}15`}; color: ${isDone ? '#10b981' : text}; font-size: ${size * 0.75}px;">
+            ${isDone ? '✓ Completed' : 'Not Started'}
+          </span>
+        `;
+
+        if (isDone) {
+          box.style.borderColor = primary;
+        }
+
+        box.addEventListener('click', () => openLesson(course));
+        container.appendChild(box);
+      });
+    }
+
+    function openLesson(lesson) {
+      activeLesson = lesson;
+      userAnswers = new Array(lesson.questions.length).fill(null);
+
+      const config = window.elementSdk?.config || defaultConfig;
+      const text = config.text_color || defaultConfig.text_color;
+      const surface = config.surface_color || defaultConfig.surface_color;
+      const primary = config.primary_action_color || defaultConfig.primary_action_color;
+      const size = config.font_size || defaultConfig.font_size;
+
+      let html = `<h1 class="panel-title" style="font-size: ${size * 2}px;">${lesson.emoji} ${lesson.name}</h1>`;
+
+      lesson.content.forEach(block => {
+        html += `<div class="content-block">`;
+        html += `<h3 class="content-heading" style="font-size: ${size * 1.38}px;">${block.heading}</h3>`;
+        if (block.text) {
+          html += `<p class="content-text" style="font-size: ${size}px;">${block.text}</p>`;
+        }
+        if (block.code) {
+          html += `<div class="code-display" style="background: ${surface}; color: ${text}; border: 2px solid ${text}25; font-size: ${size * 0.88}px;">${block.code}</div>`;
+        }
+        html += `</div>`;
+      });
+
+      html += `<div class="quiz-area" style="border-top-color: ${primary};">`;
+      html += `<h2 class="quiz-header" style="font-size: ${size * 1.63}px;">✏️ Quick Quiz</h2>`;
+
+      lesson.questions.forEach((q, qIdx) => {
+        html += `
+          <div class="question-box" id="q-${qIdx}" style="background: ${surface}; font-size: ${size}px;">
+            <div class="question-label" style="font-size: ${size * 0.75}px;">Question ${qIdx + 1} of ${lesson.questions.length}</div>
+            <div class="question-prompt" style="font-size: ${size * 1.19}px;">${q.prompt}</div>
+            <div class="answer-list">
+              ${q.choices.map((choice, cIdx) => `
+                <button class="answer-option" data-q="${qIdx}" data-c="${cIdx}" 
+                  style="border-color: ${text}30; color: ${text}; background: ${text}08; font-size: ${size}px;">
+                  ${choice}
+                </button>
+              `).join('')}
+            </div>
+            <div class="result-msg" id="result-${qIdx}" style="font-size: ${size * 0.94}px;"></div>
+          </div>
+        `;
+      });
+
+      html += `
+        <div class="submit-area">
+          <button class="submit-btn" id="submitBtn" style="background: ${primary}; color: #ffffff; font-size: ${size * 1.13}px;">
+            Submit Answers
+          </button>
+        </div>
+      </div>`;
+
+      document.getElementById('panelContent').innerHTML = html;
+
+      document.querySelectorAll('.answer-option').forEach(btn => {
+        btn.addEventListener('click', handleAnswer);
+      });
+
+      document.getElementById('submitBtn').addEventListener('click', submitQuiz);
+
+      document.getElementById('overlay').classList.add('show');
+    }
+
+    function handleAnswer(e) {
+      const qIdx = parseInt(e.target.dataset.q);
+      const cIdx = parseInt(e.target.dataset.c);
+
+      userAnswers[qIdx] = cIdx;
+
+      const config = window.elementSdk?.config || defaultConfig;
+      const primary = config.primary_action_color || defaultConfig.primary_action_color;
+      const text = config.text_color || defaultConfig.text_color;
+
+      const qBox = document.getElementById(`q-${qIdx}`);
+      qBox.querySelectorAll('.answer-option').forEach(btn => {
+        btn.classList.remove('picked');
+        btn.style.borderColor = `${text}30`;
+      });
+
+      e.target.classList.add('picked');
+      e.target.style.borderColor = primary;
+    }
+
+    async function submitQuiz() {
+      if (userAnswers.includes(null)) {
+        return;
+      }
+
+      const config = window.elementSdk?.config || defaultConfig;
+      const size = config.font_size || defaultConfig.font_size;
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+
+      let correctCount = 0;
+
+      activeLesson.questions.forEach((q, qIdx) => {
+        const userChoice = userAnswers[qIdx];
+        const isCorrect = userChoice === q.answer;
+
+        if (isCorrect) correctCount++;
+
+        const qBox = document.getElementById(`q-${qIdx}`);
+        const buttons = qBox.querySelectorAll('.answer-option');
+
+        buttons.forEach((btn, cIdx) => {
+          btn.disabled = true;
+          if (cIdx === q.answer) {
+            btn.classList.add('right');
+          } else if (cIdx === userChoice && !isCorrect) {
+            btn.classList.add('wrong');
+          }
+        });
+
+        const resultMsg = document.getElementById(`result-${qIdx}`);
+        resultMsg.classList.add('show');
+        resultMsg.style.fontSize = `${size * 0.94}px`;
+        if (isCorrect) {
+          resultMsg.className = 'result-msg show success';
+          resultMsg.textContent = '✓ Correct! Well done!';
+        } else {
+          resultMsg.className = 'result-msg show error';
+          resultMsg.textContent = `✗ Incorrect. The right answer is: ${q.choices[q.answer]}`;
+        }
+      });
+
+      const finalScore = Math.round((correctCount / activeLesson.questions.length) * 100);
+
+      if (window.dataSdk) {
+        const existing = progressData.find(p => p.lesson_id === activeLesson.id);
+
+        if (existing) {
+          const updated = {
+            ...existing,
+            completed: true,
+            score: finalScore,
+            completed_at: new Date().toISOString()
+          };
+          await window.dataSdk.update(updated);
+        } else {
+          const newRecord = {
+            id: `prog_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            lesson_id: activeLesson.id,
+            completed: true,
+            score: finalScore,
+            completed_at: new Date().toISOString()
+          };
+          await window.dataSdk.create(newRecord);
+        }
+      }
+
+      showFinalResults(finalScore, correctCount, activeLesson.questions.length);
+    }
+
+    function showFinalResults(score, correct, total) {
+      const config = window.elementSdk?.config || defaultConfig;
+      const primary = config.primary_action_color || defaultConfig.primary_action_color;
+      const surface = config.surface_color || defaultConfig.surface_color;
+      const text = config.text_color || defaultConfig.text_color;
+      const size = config.font_size || defaultConfig.font_size;
+
+      let msg = '';
+      let emoji = '';
+      if (score >= 90) {
+        msg = 'Amazing! You nailed it!';
+        emoji = '🏆';
+      } else if (score >= 70) {
+        msg = 'Great job! Keep going!';
+        emoji = '🎉';
+      } else if (score >= 50) {
+        msg = 'Good effort! Practice more!';
+        emoji = '👍';
+      } else {
+        msg = 'Keep trying! You got this!';
+        emoji = '💪';
+      }
+
+      const html = `
+        <div class="final-results">
+          <div class="final-emoji">${emoji}</div>
+          <div class="final-score" style="color: ${primary}; font-size: ${size * 4}px;">${score}%</div>
+          <div class="final-message" style="font-size: ${size * 1.5}px;">${msg}</div>
+          <div class="final-details" style="font-size: ${size}px;">You answered ${correct} out of ${total} questions correctly</div>
+          <button class="done-btn" id="doneBtn" style="background: ${primary}; color: #ffffff; font-size: ${size * 1.13}px;">
+            Back to Courses
+          </button>
+        </div>
+      `;
+
+      document.getElementById('panelContent').innerHTML = html;
+
+      document.getElementById('doneBtn').addEventListener('click', () => {
+        document.getElementById('overlay').classList.remove('show');
+      });
+    }
+
+    document.getElementById('closeBtn').addEventListener('click', () => {
+      document.getElementById('overlay').classList.remove('show');
+    });
+
+    document.getElementById('overlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        document.getElementById('overlay').classList.remove('show');
+      }
+    });
+
+    document.getElementById('startButton').addEventListener('click', () => {
+      document.getElementById('sectionTitle').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    async function init() {
+      // Initialize Element SDK first
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              {
+                get: () => config.background_color || defaultConfig.background_color,
+                set: (value) => {
+                  config.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                }
+              },
+              {
+                get: () => config.surface_color || defaultConfig.surface_color,
+                set: (value) => {
+                  config.surface_color = value;
+                  window.elementSdk.setConfig({ surface_color: value });
+                }
+              },
+              {
+                get: () => config.text_color || defaultConfig.text_color,
+                set: (value) => {
+                  config.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                }
+              },
+              {
+                get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                set: (value) => {
+                  config.primary_action_color = value;
+                  window.elementSdk.setConfig({ primary_action_color: value });
+                }
+              },
+              {
+                get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                set: (value) => {
+                  config.secondary_action_color = value;
+                  window.elementSdk.setConfig({ secondary_action_color: value });
+                }
+              }
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => config.font_family || defaultConfig.font_family,
+              set: (value) => {
+                config.font_family = value;
+                window.elementSdk.setConfig({ font_family: value });
+              }
+            },
+            fontSizeable: {
+              get: () => config.font_size || defaultConfig.font_size,
+              set: (value) => {
+                config.font_size = value;
+                window.elementSdk.setConfig({ font_size: value });
+              }
+            }
+          }),
+          mapToEditPanelValues: (config) => new Map([
+            ['main_title', config.main_title || defaultConfig.main_title],
+            ['subtitle', config.subtitle || defaultConfig.subtitle],
+            ['cta_button', config.cta_button || defaultConfig.cta_button]
+          ])
+        });
+      }
+
+      // Initialize Data SDK
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          console.error('Data SDK init failed');
+        }
+      }
+
+      // Ensure courses are rendered immediately
+      updateStats();
+      renderCourses();
+    }
+
+    // Run init when page loads
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a2df2a812c22992',t:'MTc2Mzg3MjQwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
