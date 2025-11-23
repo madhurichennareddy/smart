@@ -130,6 +130,10 @@
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
     }
 
+    .lesson-box.completed {
+      border-color: #10b981;
+    }
+
     .lesson-emoji {
       font-size: 56px;
       margin-bottom: 16px;
@@ -154,6 +158,13 @@
       border-radius: 20px;
       font-size: 12px;
       font-weight: 700;
+      background-color: rgba(59, 130, 246, 0.2);
+      color: #3b82f6;
+    }
+
+    .lesson-badge.completed {
+      background-color: rgba(16, 185, 129, 0.2);
+      color: #10b981;
     }
 
     .overlay {
@@ -201,231 +212,53 @@
 
     .close-btn:hover {
       transform: rotate(90deg);
+      background-color: rgba(241, 245, 249, 0.25);
     }
 
     .panel-title {
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 800;
       margin: 0 0 24px 0;
+      text-align: center;
     }
 
-    .content-block {
-      margin-bottom: 32px;
+    .panel-content {
+      font-size: 18px;
       line-height: 1.7;
-    }
-
-    .content-heading {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 0 0 12px 0;
-    }
-
-    .content-text {
-      font-size: 16px;
-      margin: 0 0 16px 0;
-    }
-
-    .code-display {
-      padding: 20px;
-      border-radius: 12px;
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      line-height: 1.6;
-      margin: 16px 0;
-      background-color: #1e293b;
-      border: 2px solid rgba(241, 245, 249, 0.15);
-    }
-
-    .quiz-area {
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 3px solid #3b82f6;
-    }
-
-    .quiz-header {
-      font-size: 26px;
-      font-weight: 700;
-      text-align: center;
       margin-bottom: 32px;
     }
 
-    .question-box {
-      margin-bottom: 32px;
-      padding: 28px;
-      border-radius: 16px;
-      background-color: #1e293b;
-    }
-
-    .question-label {
-      font-size: 12px;
-      font-weight: 700;
-      opacity: 0.6;
-      margin-bottom: 12px;
-    }
-
-    .question-prompt {
-      font-size: 19px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .answer-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .answer-option {
-      padding: 16px 20px;
-      border-radius: 10px;
-      border: 3px solid rgba(241, 245, 249, 0.3);
-      font-size: 16px;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-weight: 500;
-      background: rgba(241, 245, 249, 0.05);
-      color: #f1f5f9;
-    }
-
-    .answer-option:hover {
-      transform: translateX(8px);
-    }
-
-    .answer-option.picked {
-      border-width: 4px;
-      border-color: #3b82f6;
-    }
-
-    .answer-option:disabled {
-      cursor: not-allowed;
-      opacity: 0.8;
-    }
-
-    .answer-option.right {
-      border-color: #10b981;
-      background: rgba(16, 185, 129, 0.15);
-    }
-
-    .answer-option.wrong {
-      border-color: #ef4444;
-      background: rgba(239, 68, 68, 0.15);
-    }
-
-    .result-msg {
-      margin-top: 16px;
-      padding: 14px 18px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
-      display: none;
-    }
-
-    .result-msg.show {
-      display: block;
-    }
-
-    .result-msg.success {
-      background: rgba(16, 185, 129, 0.15);
-      border: 2px solid #10b981;
-      color: #10b981;
-    }
-
-    .result-msg.error {
-      background: rgba(239, 68, 68, 0.15);
-      border: 2px solid #ef4444;
-      color: #ef4444;
-    }
-
-    .submit-area {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
-    }
-
-    .submit-btn {
-      padding: 16px 56px;
+    .complete-btn {
+      width: 100%;
+      padding: 16px;
       font-size: 18px;
       font-weight: 700;
       border: none;
       border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s;
-      background-color: #3b82f6;
+      background-color: #10b981;
       color: #ffffff;
     }
 
-    .submit-btn:hover:not(:disabled) {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .final-results {
-      text-align: center;
-      padding: 48px 24px;
-    }
-
-    .final-emoji {
-      font-size: 80px;
-      margin-bottom: 24px;
-    }
-
-    .final-score {
-      font-size: 64px;
-      font-weight: 800;
-      margin-bottom: 20px;
-      color: #3b82f6;
-    }
-
-    .final-message {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .final-details {
-      font-size: 16px;
-      opacity: 0.8;
-      margin-bottom: 40px;
-    }
-
-    .done-btn {
-      padding: 16px 48px;
-      font-size: 18px;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s;
-      background-color: #3b82f6;
-      color: #ffffff;
-    }
-
-    .done-btn:hover {
+    .complete-btn:hover {
+      background-color: #059669;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
 
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 36px;
-      }
+    .complete-btn.completed {
+      background-color: rgba(16, 185, 129, 0.3);
+      cursor: default;
+    }
 
-      .lessons-container {
-        grid-template-columns: 1fr;
-      }
+    .complete-btn.completed:hover {
+      transform: none;
+      background-color: rgba(16, 185, 129, 0.3);
+    }
 
-      .stats-bar {
-        gap: 24px;
-      }
+    .loading {
+      opacity: 0.6;
+      pointer-events: none;
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
@@ -433,658 +266,834 @@
  </head>
  <body>
   <div class="app-container">
-   <section class="hero-section" id="heroSection">
-    <h1 class="hero-title" id="heroTitle">Learning Academy</h1>
-    <p class="hero-subtitle" id="heroSubtitle">Unlock your potential with interactive courses</p><button class="start-button" id="startButton">Start Learning</button>
-   </section>
-   <div class="stats-bar" id="statsBar">
-    <div class="stat-item"><span class="stat-number" id="completedStat">0</span> <span class="stat-label">Completed</span>
+   <header class="hero-section">
+    <h1 class="hero-title" id="hero-title">Master New Skills Today</h1>
+    <p class="hero-subtitle" id="hero-subtitle">Unlock your potential with expert-led courses</p><button class="start-button" id="start-button" onclick="scrollToLessons()">Start Learning</button>
+   </header>
+   <div class="stats-bar">
+    <div class="stat-item"><span class="stat-number" id="total-lessons">6</span> <span class="stat-label">Total Lessons</span>
     </div>
-    <div class="stat-item"><span class="stat-number" id="scoreStat">0%</span> <span class="stat-label">Avg Score</span>
+    <div class="stat-item"><span class="stat-number" id="completed-count">0</span> <span class="stat-label">Completed</span>
     </div>
-    <div class="stat-item"><span class="stat-number" id="totalStat">6</span> <span class="stat-label">Total Lessons</span>
+    <div class="stat-item"><span class="stat-number" id="progress-percent">0%</span> <span class="stat-label">Progress</span>
     </div>
    </div>
-   <section class="content-section">
-    <h2 class="section-title" id="sectionTitle">📚 Choose Your Course</h2>
-    <div class="lessons-container" id="lessonsContainer"></div>
-   </section>
+   <main class="content-section">
+    <h2 class="section-title" id="section-title">Available Courses</h2>
+    <div class="lessons-container" id="lessons-container"></div>
+   </main>
   </div>
   <div class="overlay" id="overlay">
-   <div class="lesson-panel" id="lessonPanel"><button class="close-btn" id="closeBtn">×</button>
-    <div id="panelContent"></div>
+   <div class="lesson-panel"><button class="close-btn" onclick="closeLesson()" aria-label="Close lesson">×</button>
+    <h3 class="panel-title" id="panel-title"></h3>
+    <div class="panel-content" id="panel-content"></div><button class="complete-btn" id="complete-btn" onclick="toggleComplete()"></button>
    </div>
   </div>
   <script>
     const defaultConfig = {
+      hero_title: "Master New Skills Today",
+      hero_subtitle: "Unlock your potential with expert-led courses",
+      cta_button_text: "Start Learning",
+      section_title: "Available Courses",
       background_color: "#0f172a",
       surface_color: "#1e293b",
       text_color: "#f1f5f9",
       primary_action_color: "#3b82f6",
-      secondary_action_color: "#8b5cf6",
-      main_title: "Learning Academy",
-      subtitle: "Unlock your potential with interactive courses",
-      cta_button: "Start Learning",
-      font_family: "inherit",
+      secondary_action_color: "#10b981",
+      font_family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       font_size: 16
     };
 
-    const courses = [
+    const lessons = [
       {
-        id: "web-basics",
-        name: "Web Development Basics",
+        id: "intro-web",
         emoji: "🌐",
-        duration: "10 min",
-        level: "Beginner",
-        content: [
-          {
-            heading: "What is Web Development?",
-            text: "Web development is the process of creating websites and web applications. It combines design, programming, and problem-solving to build experiences on the internet."
-          },
-          {
-            heading: "The Three Pillars",
-            text: "Every website is built with three core technologies: HTML for structure, CSS for styling, and JavaScript for interactivity. Together, they create the web as we know it."
-          },
-          {
-            heading: "Example Structure",
-            code: "<html>\n  <head>\n    <title>My Site</title>\n  </head>\n  <body>\n    <h1>Hello World!</h1>\n  </body>\n</html>"
-          }
+        name: "Web Development Basics",
+        info: "30 min • Beginner",
+        description: "Learn the fundamentals of HTML, CSS, and JavaScript to build your first website. This course covers everything from basic HTML structure to styling with CSS and adding interactivity with JavaScript.",
+        objectives: [
+          "Understand HTML document structure and semantic tags",
+          "Style web pages using CSS properties and selectors",
+          "Add interactivity with JavaScript basics",
+          "Build a complete responsive webpage from scratch"
         ],
-        questions: [
+        quiz: [
           {
-            prompt: "What language provides the structure of a webpage?",
-            choices: ["CSS", "JavaScript", "HTML", "Python"],
-            answer: 2
+            question: "What does HTML stand for?",
+            options: ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language"],
+            correct: 0
           },
           {
-            prompt: "What does CSS stand for?",
-            choices: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Code Style Syntax"],
-            answer: 1
+            question: "Which CSS property is used to change text color?",
+            options: ["text-color", "font-color", "color", "text-style"],
+            correct: 2
+          },
+          {
+            question: "What is the correct syntax for referring to an external JavaScript file?",
+            options: ["<script href='app.js'>", "<script name='app.js'>", "<script src='app.js'>", "<script file='app.js'>"],
+            correct: 2
           }
         ]
       },
       {
-        id: "javascript-intro",
-        name: "JavaScript Fundamentals",
-        emoji: "⚡",
-        duration: "15 min",
-        level: "Beginner",
-        content: [
-          {
-            heading: "Why JavaScript?",
-            text: "JavaScript is the programming language of the web. It powers interactive features, handles user input, and makes websites dynamic and engaging."
-          },
-          {
-            heading: "Variables and Data",
-            text: "You can store information in variables using let, const, or var. Variables hold different types of data like numbers, text strings, or boolean true/false values."
-          },
-          {
-            heading: "Simple Example",
-            code: "let userName = 'Alex';\nlet userAge = 28;\nconst isActive = true;\n\nconsole.log('User:', userName);"
-          }
-        ],
-        questions: [
-          {
-            prompt: "Which keyword creates a constant variable?",
-            choices: ["let", "const", "var", "static"],
-            answer: 1
-          },
-          {
-            prompt: "What type is the value 42?",
-            choices: ["String", "Number", "Boolean", "Array"],
-            answer: 1
-          }
-        ]
-      },
-      {
-        id: "css-design",
-        name: "CSS Design Principles",
+        id: "design-101",
         emoji: "🎨",
-        duration: "12 min",
-        level: "Beginner",
-        content: [
-          {
-            heading: "Styling with CSS",
-            text: "CSS (Cascading Style Sheets) controls how HTML elements look. You can change colors, fonts, spacing, layouts, and create beautiful designs."
-          },
-          {
-            heading: "Selectors",
-            text: "CSS selectors target HTML elements. You can select by tag name, class (.classname), or ID (#idname) to apply specific styles."
-          },
-          {
-            heading: "Basic Styles",
-            code: ".heading {\n  color: blue;\n  font-size: 24px;\n  font-weight: bold;\n}\n\n#logo {\n  width: 100px;\n}"
-          }
+        name: "Design Principles",
+        info: "45 min • Intermediate",
+        description: "Master color theory, typography, and layout to create stunning visual designs. Learn professional design techniques used by top designers worldwide.",
+        objectives: [
+          "Apply color theory to create harmonious palettes",
+          "Choose and pair fonts effectively",
+          "Create balanced layouts using grids",
+          "Understand visual hierarchy and spacing"
         ],
-        questions: [
+        quiz: [
           {
-            prompt: "How do you select an element with class 'button'?",
-            choices: ["#button", ".button", "button", "*button"],
-            answer: 1
+            question: "What are complementary colors?",
+            options: ["Colors next to each other on the color wheel", "Colors opposite each other on the color wheel", "Different shades of the same color", "Black and white"],
+            correct: 1
           },
           {
-            prompt: "Which property changes background color?",
-            choices: ["color", "bg-color", "background-color", "background"],
-            answer: 2
+            question: "Which principle refers to the arrangement of elements to guide the eye?",
+            options: ["Contrast", "Alignment", "Visual Hierarchy", "Proximity"],
+            correct: 2
+          },
+          {
+            question: "What is the recommended maximum number of fonts in a design?",
+            options: ["1-2", "2-3", "4-5", "As many as needed"],
+            correct: 1
           }
         ]
       },
       {
-        id: "functions",
-        name: "Functions & Logic",
-        emoji: "🔧",
-        duration: "18 min",
-        level: "Intermediate",
-        content: [
-          {
-            heading: "What are Functions?",
-            text: "Functions are reusable blocks of code that perform specific tasks. They help organize your code, avoid repetition, and make programs more maintainable."
-          },
-          {
-            heading: "Creating Functions",
-            text: "Functions can accept inputs (parameters) and return outputs (return values). You can call them multiple times with different inputs."
-          },
-          {
-            heading: "Function Examples",
-            code: "function greet(name) {\n  return 'Hello, ' + name;\n}\n\nconst result = greet('Sam');\nconsole.log(result);"
-          }
-        ],
-        questions: [
-          {
-            prompt: "What keyword creates a function?",
-            choices: ["func", "function", "def", "create"],
-            answer: 1
-          },
-          {
-            prompt: "What does 'return' do?",
-            choices: ["Stops the program", "Restarts the function", "Sends back a value", "Creates a loop"],
-            answer: 2
-          }
-        ]
-      },
-      {
-        id: "arrays",
-        name: "Arrays & Iteration",
+        id: "data-science",
         emoji: "📊",
-        duration: "16 min",
-        level: "Intermediate",
-        content: [
-          {
-            heading: "Understanding Arrays",
-            text: "Arrays store multiple values in a single variable. They're ordered lists where each item has an index number starting from 0."
-          },
-          {
-            heading: "Looping Through Arrays",
-            text: "Loops let you perform actions on each item in an array. Common methods include for loops, forEach, and map."
-          },
-          {
-            heading: "Array Example",
-            code: "const colors = ['red', 'blue', 'green'];\n\ncolors.forEach(color => {\n  console.log(color);\n});"
-          }
+        name: "Data Science Intro",
+        info: "60 min • Beginner",
+        description: "Explore data analysis, visualization, and basic machine learning concepts. Learn how to extract insights from data and make data-driven decisions.",
+        objectives: [
+          "Clean and prepare data for analysis",
+          "Create meaningful data visualizations",
+          "Understand statistical concepts and measures",
+          "Introduction to machine learning algorithms"
         ],
-        questions: [
+        quiz: [
           {
-            prompt: "How do you access the first item in an array?",
-            choices: ["array[1]", "array[0]", "array.first", "array.start"],
-            answer: 1
+            question: "What is the first step in the data science workflow?",
+            options: ["Data Visualization", "Data Collection", "Model Building", "Data Cleaning"],
+            correct: 1
           },
           {
-            prompt: "What does forEach do?",
-            choices: ["Sorts the array", "Removes items", "Runs code for each item", "Reverses the array"],
-            answer: 2
+            question: "Which chart type is best for showing trends over time?",
+            options: ["Pie chart", "Line chart", "Bar chart", "Scatter plot"],
+            correct: 1
+          },
+          {
+            question: "What does 'mean' represent in statistics?",
+            options: ["The middle value", "The most frequent value", "The average value", "The range of values"],
+            correct: 2
           }
         ]
       },
       {
-        id: "async",
-        name: "Async Programming",
-        emoji: "⏰",
-        duration: "20 min",
-        level: "Advanced",
-        content: [
-          {
-            heading: "Asynchronous Code",
-            text: "Async programming allows your code to handle tasks that take time (like loading data) without blocking other operations from running."
-          },
-          {
-            heading: "Promises & Async/Await",
-            text: "Promises represent future values. The async/await syntax makes async code easier to read and write, looking similar to regular synchronous code."
-          },
-          {
-            heading: "Async Example",
-            code: "async function loadData() {\n  const response = await fetch(url);\n  const data = await response.json();\n  return data;\n}"
-          }
+        id: "marketing",
+        emoji: "📱",
+        name: "Digital Marketing",
+        info: "40 min • Beginner",
+        description: "Understand SEO, social media strategy, and content marketing fundamentals. Learn how to reach and engage your target audience effectively online.",
+        objectives: [
+          "Optimize content for search engines (SEO)",
+          "Create engaging social media campaigns",
+          "Develop content marketing strategies",
+          "Measure and analyze marketing metrics"
         ],
-        questions: [
+        quiz: [
           {
-            prompt: "What does 'await' do?",
-            choices: ["Pauses for 1 second", "Waits for a promise", "Stops the program", "Creates a delay"],
-            answer: 1
+            question: "What does SEO stand for?",
+            options: ["Social Engine Optimization", "Search Engine Optimization", "System Entry Optimization", "Site Engagement Optimization"],
+            correct: 1
           },
           {
-            prompt: "Where can 'await' be used?",
-            choices: ["Anywhere", "Only in async functions", "Only in loops", "Only in classes"],
-            answer: 1
+            question: "Which metric measures user engagement on social media?",
+            options: ["Impressions only", "Follower count only", "Likes, shares, and comments", "Profile views only"],
+            correct: 2
+          },
+          {
+            question: "What is a 'call-to-action' (CTA)?",
+            options: ["A phone number", "A prompt encouraging users to take action", "A contact form", "A website menu"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "photography",
+        emoji: "📷",
+        name: "Photography Essentials",
+        info: "50 min • Beginner",
+        description: "Learn composition, lighting, and editing techniques for stunning photos. Master the art of capturing beautiful moments with professional techniques.",
+        objectives: [
+          "Master the rule of thirds and composition",
+          "Understand exposure triangle (ISO, Aperture, Shutter Speed)",
+          "Work with natural and artificial lighting",
+          "Edit photos using professional techniques"
+        ],
+        quiz: [
+          {
+            question: "What is the 'rule of thirds' in photography?",
+            options: ["Take three photos of each subject", "Divide the frame into nine equal parts", "Use three light sources", "Shoot at three different angles"],
+            correct: 1
+          },
+          {
+            question: "Which setting controls the amount of light entering the camera?",
+            options: ["Focus", "Aperture", "White Balance", "Zoom"],
+            correct: 1
+          },
+          {
+            question: "What is 'golden hour' in photography?",
+            options: ["The first hour of shooting", "One hour after sunrise or before sunset", "Any hour with good weather", "60 minutes of editing time"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "productivity",
+        emoji: "⚡",
+        name: "Productivity Hacks",
+        info: "25 min • All Levels",
+        description: "Discover time management strategies and tools to maximize your efficiency. Learn proven techniques to accomplish more in less time.",
+        objectives: [
+          "Implement the Pomodoro Technique",
+          "Prioritize tasks using the Eisenhower Matrix",
+          "Eliminate distractions and focus better",
+          "Build sustainable productivity habits"
+        ],
+        quiz: [
+          {
+            question: "What is the Pomodoro Technique?",
+            options: ["A cooking method", "25 minutes of focused work followed by a break", "A project management tool", "A meditation practice"],
+            correct: 1
+          },
+          {
+            question: "In the Eisenhower Matrix, which tasks should you do first?",
+            options: ["Not urgent and not important", "Urgent but not important", "Important but not urgent", "Urgent and important"],
+            correct: 3
+          },
+          {
+            question: "What is 'time blocking'?",
+            options: ["Blocking time-wasting websites", "Scheduling specific time slots for tasks", "Working without breaks", "Multitasking efficiently"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "python-basics",
+        emoji: "🐍",
+        name: "Python Programming",
+        info: "55 min • Beginner",
+        description: "Start your coding journey with Python, one of the most popular and versatile programming languages. Learn to write clean, efficient code.",
+        objectives: [
+          "Understand Python syntax and data types",
+          "Work with lists, dictionaries, and functions",
+          "Handle errors and exceptions properly",
+          "Build practical Python applications"
+        ],
+        quiz: [
+          {
+            question: "Which symbol is used for comments in Python?",
+            options: ["//", "#", "/*", "--"],
+            correct: 1
+          },
+          {
+            question: "What data type is [1, 2, 3, 4] in Python?",
+            options: ["Tuple", "Dictionary", "List", "Set"],
+            correct: 2
+          },
+          {
+            question: "How do you define a function in Python?",
+            options: ["function myFunc():", "def myFunc():", "func myFunc():", "define myFunc():"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "ui-ux",
+        emoji: "✨",
+        name: "UI/UX Design",
+        info: "50 min • Intermediate",
+        description: "Create intuitive and delightful user experiences. Learn the principles of user interface and user experience design that make products people love.",
+        objectives: [
+          "Conduct user research and create personas",
+          "Design wireframes and prototypes",
+          "Apply usability principles and best practices",
+          "Test and iterate on designs"
+        ],
+        quiz: [
+          {
+            question: "What does UX stand for?",
+            options: ["User Extension", "Universal Experience", "User Experience", "Unified Exchange"],
+            correct: 2
+          },
+          {
+            question: "What is a wireframe?",
+            options: ["A high-fidelity design", "A basic visual guide for layout", "A finished product", "A coding framework"],
+            correct: 1
+          },
+          {
+            question: "What is the goal of user research?",
+            options: ["Make designs look pretty", "Understand user needs and behaviors", "Increase development time", "Reduce costs"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "blockchain",
+        emoji: "⛓️",
+        name: "Blockchain Fundamentals",
+        info: "45 min • Advanced",
+        description: "Understand the revolutionary technology behind cryptocurrencies and decentralized applications. Learn how blockchain is transforming industries.",
+        objectives: [
+          "Understand how blockchain technology works",
+          "Learn about cryptocurrencies and tokens",
+          "Explore smart contracts and DApps",
+          "Identify blockchain use cases across industries"
+        ],
+        quiz: [
+          {
+            question: "What is a blockchain?",
+            options: ["A type of cryptocurrency", "A distributed ledger technology", "A programming language", "A database software"],
+            correct: 1
+          },
+          {
+            question: "What ensures the security of blockchain?",
+            options: ["Passwords", "Cryptography and consensus", "Firewalls", "Antivirus software"],
+            correct: 1
+          },
+          {
+            question: "What is a smart contract?",
+            options: ["A legal document", "Self-executing code on blockchain", "A business agreement", "A payment method"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "public-speaking",
+        emoji: "🎤",
+        name: "Public Speaking Mastery",
+        info: "40 min • All Levels",
+        description: "Overcome stage fright and deliver powerful presentations. Build confidence and master the art of engaging any audience.",
+        objectives: [
+          "Overcome nervousness and build confidence",
+          "Structure compelling presentations",
+          "Use vocal variety and body language effectively",
+          "Engage and persuade your audience"
+        ],
+        quiz: [
+          {
+            question: "What is the most important aspect of public speaking?",
+            options: ["Speaking loudly", "Knowing your audience", "Using fancy words", "Standing still"],
+            correct: 1
+          },
+          {
+            question: "How can you reduce nervousness before speaking?",
+            options: ["Avoid practice", "Deep breathing and preparation", "Think about failure", "Rush through the speech"],
+            correct: 1
+          },
+          {
+            question: "What is the '3-part structure' of a speech?",
+            options: ["Beginning, middle, end", "Introduction, body, conclusion", "Title, content, questions", "Greeting, story, goodbye"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "financial-literacy",
+        emoji: "💰",
+        name: "Financial Literacy",
+        info: "35 min • Beginner",
+        description: "Take control of your finances with essential money management skills. Learn budgeting, saving, and smart investing strategies.",
+        objectives: [
+          "Create and maintain a personal budget",
+          "Understand different types of investments",
+          "Build an emergency fund and save effectively",
+          "Make informed financial decisions"
+        ],
+        quiz: [
+          {
+            question: "What is the 50/30/20 budgeting rule?",
+            options: ["50% savings, 30% needs, 20% wants", "50% needs, 30% wants, 20% savings", "50% wants, 30% savings, 20% needs", "All equal thirds"],
+            correct: 1
+          },
+          {
+            question: "What is compound interest?",
+            options: ["Interest on the principal only", "Interest on principal and accumulated interest", "A bank fee", "A type of loan"],
+            correct: 1
+          },
+          {
+            question: "How many months of expenses should an emergency fund cover?",
+            options: ["1-2 months", "3-6 months", "12 months", "24 months"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "mindfulness",
+        emoji: "🧘",
+        name: "Mindfulness & Meditation",
+        info: "30 min • Beginner",
+        description: "Reduce stress and increase focus through mindfulness practices. Learn meditation techniques for a calmer, more centered life.",
+        objectives: [
+          "Practice basic meditation techniques",
+          "Develop mindful awareness in daily life",
+          "Manage stress and anxiety effectively",
+          "Improve focus and emotional regulation"
+        ],
+        quiz: [
+          {
+            question: "What is mindfulness?",
+            options: ["Thinking about the future", "Being present in the moment", "Remembering the past", "Multitasking effectively"],
+            correct: 1
+          },
+          {
+            question: "How long should beginners meditate daily?",
+            options: ["5-10 minutes", "1 hour", "3 hours", "All day"],
+            correct: 0
+          },
+          {
+            question: "What is 'breath awareness' meditation?",
+            options: ["Holding your breath", "Focusing on natural breathing", "Breathing rapidly", "Counting breaths only"],
+            correct: 1
           }
         ]
       }
     ];
 
-    let progressData = [];
-    let activeLesson = null;
-    let userAnswers = [];
+    let userProgress = [];
+    let currentLesson = null;
+    let isUpdating = false;
 
     const dataHandler = {
       onDataChanged(data) {
-        progressData = [...data];
+        userProgress = data || [];
+        renderLessons();
         updateStats();
-        renderCourses();
+        
+        // Update panel if currently viewing a lesson
+        if (currentLesson && document.getElementById('overlay').classList.contains('show')) {
+          const progress = userProgress.find(p => p.lesson_id === currentLesson.id);
+          const isCompleted = progress && progress.completed;
+          const completeBtn = document.getElementById('complete-btn');
+          completeBtn.textContent = isCompleted ? '✓ Completed' : 'Mark as Complete';
+          completeBtn.className = `complete-btn${isCompleted ? ' completed' : ''}`;
+          
+          const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+          if (!isCompleted) {
+            completeBtn.style.backgroundColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+          }
+        }
       }
     };
 
-    async function onConfigChange(config) {
-      const bg = config.background_color || defaultConfig.background_color;
-      const surface = config.surface_color || defaultConfig.surface_color;
-      const text = config.text_color || defaultConfig.text_color;
-      const primary = config.primary_action_color || defaultConfig.primary_action_color;
-      const secondary = config.secondary_action_color || defaultConfig.secondary_action_color;
-      const font = config.font_family || defaultConfig.font_family;
-      const size = config.font_size || defaultConfig.font_size;
-      const fontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    async function init() {
+      // Initial render immediately on page load
+      renderLessons();
+      updateStats();
 
-      document.body.style.backgroundColor = bg;
-      document.body.style.color = text;
-      document.body.style.fontFamily = `${font}, ${fontStack}`;
-      document.body.style.fontSize = `${size}px`;
+      const initResult = await window.dataSdk.init(dataHandler);
+      if (!initResult.isOk) {
+        console.error("Failed to initialize data SDK");
+        return;
+      }
 
-      document.getElementById('heroTitle').textContent = config.main_title || defaultConfig.main_title;
-      document.getElementById('heroTitle').style.fontSize = `${size * 3}px`;
+      await window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+          document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          document.getElementById('start-button').textContent = config.cta_button_text || defaultConfig.cta_button_text;
+          document.getElementById('section-title').textContent = config.section_title || defaultConfig.section_title;
 
-      document.getElementById('heroSubtitle').textContent = config.subtitle || defaultConfig.subtitle;
-      document.getElementById('heroSubtitle').style.fontSize = `${size * 1.25}px`;
+          const customFont = config.font_family || defaultConfig.font_family;
+          const baseFontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+          document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
 
-      document.getElementById('startButton').textContent = config.cta_button || defaultConfig.cta_button;
-      document.getElementById('startButton').style.fontSize = `${size * 1.13}px`;
-      document.getElementById('startButton').style.backgroundColor = primary;
-      document.getElementById('startButton').style.color = '#ffffff';
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.querySelector('.hero-title').style.fontSize = `${baseSize * 3}px`;
+          document.querySelector('.hero-subtitle').style.fontSize = `${baseSize * 1.25}px`;
+          document.querySelector('.start-button').style.fontSize = `${baseSize * 1.125}px`;
+          document.querySelector('.section-title').style.fontSize = `${baseSize * 1.75}px`;
+          document.querySelector('.panel-title').style.fontSize = `${baseSize * 2.25}px`;
+          document.querySelector('.panel-content').style.fontSize = `${baseSize * 1.125}px`;
 
-      document.getElementById('sectionTitle').style.fontSize = `${size * 1.75}px`;
+          document.body.style.backgroundColor = config.background_color || defaultConfig.background_color;
+          document.body.style.color = config.text_color || defaultConfig.text_color;
+          
+          document.querySelectorAll('.lesson-box, .lesson-panel').forEach(el => {
+            el.style.backgroundColor = config.surface_color || defaultConfig.surface_color;
+            el.style.color = config.text_color || defaultConfig.text_color;
+          });
 
-      document.getElementById('statsBar').style.borderTopColor = primary;
+          document.querySelectorAll('.start-button, .stat-number, .stats-bar').forEach(el => {
+            if (el.classList.contains('start-button')) {
+              el.style.backgroundColor = config.primary_action_color || defaultConfig.primary_action_color;
+            } else if (el.classList.contains('stat-number')) {
+              el.style.color = config.primary_action_color || defaultConfig.primary_action_color;
+            } else if (el.classList.contains('stats-bar')) {
+              el.style.borderTopColor = config.primary_action_color || defaultConfig.primary_action_color;
+            }
+          });
 
-      const statNumbers = document.querySelectorAll('.stat-number');
-      statNumbers.forEach(el => {
-        el.style.color = primary;
-        el.style.fontSize = `${size * 2}px`;
+          document.querySelectorAll('.complete-btn').forEach(el => {
+            if (!el.classList.contains('completed')) {
+              el.style.backgroundColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+            }
+          });
+
+          renderLessons();
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                window.elementSdk.config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                window.elementSdk.config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                window.elementSdk.config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                window.elementSdk.config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                window.elementSdk.config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              window.elementSdk.config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              window.elementSdk.config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+          ["cta_button_text", config.cta_button_text || defaultConfig.cta_button_text],
+          ["section_title", config.section_title || defaultConfig.section_title]
+        ])
       });
+    }
 
-      const statLabels = document.querySelectorAll('.stat-label');
-      statLabels.forEach(el => {
-        el.style.fontSize = `${size * 0.88}px`;
+    function renderLessons() {
+      const container = document.getElementById('lessons-container');
+      if (!container) return;
+      
+      container.innerHTML = '';
+
+      lessons.forEach(lesson => {
+        const progress = userProgress.find(p => p.lesson_id === lesson.id);
+        const isCompleted = progress && progress.completed;
+
+        const lessonBox = document.createElement('div');
+        lessonBox.className = `lesson-box${isCompleted ? ' completed' : ''}`;
+        lessonBox.onclick = () => openLesson(lesson);
+        
+        const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+        lessonBox.style.backgroundColor = config.surface_color || defaultConfig.surface_color;
+        lessonBox.style.color = config.text_color || defaultConfig.text_color;
+
+        lessonBox.innerHTML = `
+          <span class="lesson-emoji">${lesson.emoji}</span>
+          <div class="lesson-name">${lesson.name}</div>
+          <div class="lesson-info">${lesson.info}</div>
+          <span class="lesson-badge${isCompleted ? ' completed' : ''}">${isCompleted ? '✓ Completed' : 'Start'}</span>
+        `;
+
+        container.appendChild(lessonBox);
       });
-
-      document.getElementById('lessonPanel').style.backgroundColor = surface;
-
-      const closeBtn = document.getElementById('closeBtn');
-      closeBtn.style.backgroundColor = `${text}15`;
-      closeBtn.style.color = text;
-
-      renderCourses();
     }
 
     function updateStats() {
-      const completed = progressData.filter(p => p.completed).length;
-      document.getElementById('completedStat').textContent = completed;
+      const totalLessons = lessons.length;
+      const completedCount = userProgress.filter(p => p.completed).length;
+      const progressPercent = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
 
-      const withScores = progressData.filter(p => p.completed && p.score != null);
-      const avgScore = withScores.length > 0
-        ? Math.round(withScores.reduce((sum, p) => sum + p.score, 0) / withScores.length)
-        : 0;
-      document.getElementById('scoreStat').textContent = `${avgScore}%`;
+      document.getElementById('total-lessons').textContent = totalLessons;
+      document.getElementById('completed-count').textContent = completedCount;
+      document.getElementById('progress-percent').textContent = `${progressPercent}%`;
     }
 
-    function renderCourses() {
-      const config = window.elementSdk?.config || defaultConfig;
-      const container = document.getElementById('lessonsContainer');
-      const surface = config.surface_color || defaultConfig.surface_color;
-      const text = config.text_color || defaultConfig.text_color;
-      const primary = config.primary_action_color || defaultConfig.primary_action_color;
-      const size = config.font_size || defaultConfig.font_size;
-
-      container.innerHTML = '';
-
-      courses.forEach(course => {
-        const progress = progressData.find(p => p.lesson_id === course.id);
-        const isDone = progress?.completed || false;
-
-        const box = document.createElement('div');
-        box.className = 'lesson-box';
-        box.style.backgroundColor = surface;
-        box.style.color = text;
-
-        const levelColors = {
-          'Beginner': '#10b981',
-          'Intermediate': '#f59e0b',
-          'Advanced': '#ef4444'
-        };
-
-        box.innerHTML = `
-          <span class="lesson-emoji">${course.emoji}</span>
-          <div class="lesson-name" style="font-size: ${size * 1.38}px;">${course.name}</div>
-          <div class="lesson-info" style="font-size: ${size * 0.88}px;">${course.duration} • ${course.level}</div>
-          <span class="lesson-badge" style="background: ${isDone ? '#10b98125' : `${text}15`}; color: ${isDone ? '#10b981' : text}; font-size: ${size * 0.75}px;">
-            ${isDone ? '✓ Completed' : 'Not Started'}
-          </span>
-        `;
-
-        if (isDone) {
-          box.style.borderColor = primary;
-        }
-
-        box.addEventListener('click', () => openLesson(course));
-        container.appendChild(box);
-      });
-    }
+    let currentQuizIndex = 0;
+    let quizAnswers = [];
+    let showingQuiz = false;
 
     function openLesson(lesson) {
-      activeLesson = lesson;
-      userAnswers = new Array(lesson.questions.length).fill(null);
+      currentLesson = lesson;
+      currentQuizIndex = 0;
+      quizAnswers = [];
+      showingQuiz = false;
+      
+      const progress = userProgress.find(p => p.lesson_id === lesson.id);
+      const isCompleted = progress && progress.completed;
 
-      const config = window.elementSdk?.config || defaultConfig;
-      const text = config.text_color || defaultConfig.text_color;
-      const surface = config.surface_color || defaultConfig.surface_color;
-      const primary = config.primary_action_color || defaultConfig.primary_action_color;
-      const size = config.font_size || defaultConfig.font_size;
-
-      let html = `<h1 class="panel-title" style="font-size: ${size * 2}px;">${lesson.emoji} ${lesson.name}</h1>`;
-
-      lesson.content.forEach(block => {
-        html += `<div class="content-block">`;
-        html += `<h3 class="content-heading" style="font-size: ${size * 1.38}px;">${block.heading}</h3>`;
-        if (block.text) {
-          html += `<p class="content-text" style="font-size: ${size}px;">${block.text}</p>`;
-        }
-        if (block.code) {
-          html += `<div class="code-display" style="background: ${surface}; color: ${text}; border: 2px solid ${text}25; font-size: ${size * 0.88}px;">${block.code}</div>`;
-        }
-        html += `</div>`;
-      });
-
-      html += `<div class="quiz-area" style="border-top-color: ${primary};">`;
-      html += `<h2 class="quiz-header" style="font-size: ${size * 1.63}px;">✏️ Quick Quiz</h2>`;
-
-      lesson.questions.forEach((q, qIdx) => {
-        html += `
-          <div class="question-box" id="q-${qIdx}" style="background: ${surface}; font-size: ${size}px;">
-            <div class="question-label" style="font-size: ${size * 0.75}px;">Question ${qIdx + 1} of ${lesson.questions.length}</div>
-            <div class="question-prompt" style="font-size: ${size * 1.19}px;">${q.prompt}</div>
-            <div class="answer-list">
-              ${q.choices.map((choice, cIdx) => `
-                <button class="answer-option" data-q="${qIdx}" data-c="${cIdx}" 
-                  style="border-color: ${text}30; color: ${text}; background: ${text}08; font-size: ${size}px;">
-                  ${choice}
-                </button>
-              `).join('')}
-            </div>
-            <div class="result-msg" id="result-${qIdx}" style="font-size: ${size * 0.94}px;"></div>
-          </div>
-        `;
-      });
-
-      html += `
-        <div class="submit-area">
-          <button class="submit-btn" id="submitBtn" style="background: ${primary}; color: #ffffff; font-size: ${size * 1.13}px;">
-            Submit Answers
-          </button>
+      document.getElementById('panel-title').textContent = lesson.name;
+      
+      let contentHTML = `
+        <div style="margin-bottom: 24px;">
+          <p style="margin-bottom: 20px; line-height: 1.7;">${lesson.description}</p>
+          <h4 style="font-size: 18px; font-weight: 700; margin: 20px 0 12px 0;">Learning Objectives:</h4>
+          <ul style="margin: 0; padding-left: 24px; line-height: 1.8;">
+            ${lesson.objectives.map(obj => `<li style="margin-bottom: 8px;">${obj}</li>`).join('')}
+          </ul>
         </div>
-      </div>`;
-
-      document.getElementById('panelContent').innerHTML = html;
-
-      document.querySelectorAll('.answer-option').forEach(btn => {
-        btn.addEventListener('click', handleAnswer);
-      });
-
-      document.getElementById('submitBtn').addEventListener('click', submitQuiz);
+      `;
+      
+      document.getElementById('panel-content').innerHTML = contentHTML;
+      
+      const completeBtn = document.getElementById('complete-btn');
+      if (isCompleted) {
+        completeBtn.textContent = '✓ Completed';
+        completeBtn.className = 'complete-btn completed';
+      } else {
+        completeBtn.textContent = 'Take Quiz';
+        completeBtn.className = 'complete-btn';
+        const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+        completeBtn.style.backgroundColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      }
 
       document.getElementById('overlay').classList.add('show');
     }
 
-    function handleAnswer(e) {
-      const qIdx = parseInt(e.target.dataset.q);
-      const cIdx = parseInt(e.target.dataset.c);
-
-      userAnswers[qIdx] = cIdx;
-
-      const config = window.elementSdk?.config || defaultConfig;
-      const primary = config.primary_action_color || defaultConfig.primary_action_color;
-      const text = config.text_color || defaultConfig.text_color;
-
-      const qBox = document.getElementById(`q-${qIdx}`);
-      qBox.querySelectorAll('.answer-option').forEach(btn => {
-        btn.classList.remove('picked');
-        btn.style.borderColor = `${text}30`;
-      });
-
-      e.target.classList.add('picked');
-      e.target.style.borderColor = primary;
+    function closeLesson() {
+      document.getElementById('overlay').classList.remove('show');
+      currentLesson = null;
     }
 
-    async function submitQuiz() {
-      if (userAnswers.includes(null)) {
-        return;
-      }
-
-      const config = window.elementSdk?.config || defaultConfig;
-      const size = config.font_size || defaultConfig.font_size;
-
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.textContent = 'Processing...';
-
-      let correctCount = 0;
-
-      activeLesson.questions.forEach((q, qIdx) => {
-        const userChoice = userAnswers[qIdx];
-        const isCorrect = userChoice === q.answer;
-
-        if (isCorrect) correctCount++;
-
-        const qBox = document.getElementById(`q-${qIdx}`);
-        const buttons = qBox.querySelectorAll('.answer-option');
-
-        buttons.forEach((btn, cIdx) => {
-          btn.disabled = true;
-          if (cIdx === q.answer) {
-            btn.classList.add('right');
-          } else if (cIdx === userChoice && !isCorrect) {
-            btn.classList.add('wrong');
-          }
-        });
-
-        const resultMsg = document.getElementById(`result-${qIdx}`);
-        resultMsg.classList.add('show');
-        resultMsg.style.fontSize = `${size * 0.94}px`;
-        if (isCorrect) {
-          resultMsg.className = 'result-msg show success';
-          resultMsg.textContent = '✓ Correct! Well done!';
-        } else {
-          resultMsg.className = 'result-msg show error';
-          resultMsg.textContent = `✗ Incorrect. The right answer is: ${q.choices[q.answer]}`;
-        }
-      });
-
-      const finalScore = Math.round((correctCount / activeLesson.questions.length) * 100);
-
-      if (window.dataSdk) {
-        const existing = progressData.find(p => p.lesson_id === activeLesson.id);
-
-        if (existing) {
-          const updated = {
-            ...existing,
-            completed: true,
-            score: finalScore,
-            completed_at: new Date().toISOString()
-          };
-          await window.dataSdk.update(updated);
-        } else {
-          const newRecord = {
-            id: `prog_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-            lesson_id: activeLesson.id,
-            completed: true,
-            score: finalScore,
-            completed_at: new Date().toISOString()
-          };
-          await window.dataSdk.create(newRecord);
-        }
-      }
-
-      showFinalResults(finalScore, correctCount, activeLesson.questions.length);
-    }
-
-    function showFinalResults(score, correct, total) {
-      const config = window.elementSdk?.config || defaultConfig;
-      const primary = config.primary_action_color || defaultConfig.primary_action_color;
-      const surface = config.surface_color || defaultConfig.surface_color;
-      const text = config.text_color || defaultConfig.text_color;
-      const size = config.font_size || defaultConfig.font_size;
-
-      let msg = '';
-      let emoji = '';
-      if (score >= 90) {
-        msg = 'Amazing! You nailed it!';
-        emoji = '🏆';
-      } else if (score >= 70) {
-        msg = 'Great job! Keep going!';
-        emoji = '🎉';
-      } else if (score >= 50) {
-        msg = 'Good effort! Practice more!';
-        emoji = '👍';
-      } else {
-        msg = 'Keep trying! You got this!';
-        emoji = '💪';
-      }
-
-      const html = `
-        <div class="final-results">
-          <div class="final-emoji">${emoji}</div>
-          <div class="final-score" style="color: ${primary}; font-size: ${size * 4}px;">${score}%</div>
-          <div class="final-message" style="font-size: ${size * 1.5}px;">${msg}</div>
-          <div class="final-details" style="font-size: ${size}px;">You answered ${correct} out of ${total} questions correctly</div>
-          <button class="done-btn" id="doneBtn" style="background: ${primary}; color: #ffffff; font-size: ${size * 1.13}px;">
-            Back to Courses
-          </button>
+    function showQuiz() {
+      if (!currentLesson || !currentLesson.quiz) return;
+      
+      showingQuiz = true;
+      const quiz = currentLesson.quiz;
+      const question = quiz[currentQuizIndex];
+      
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      
+      let quizHTML = `
+        <div style="margin-bottom: 24px;">
+          <div style="font-size: 14px; opacity: 0.7; margin-bottom: 16px;">Question ${currentQuizIndex + 1} of ${quiz.length}</div>
+          <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 24px; line-height: 1.4;">${question.question}</h4>
+          <div id="quiz-options" style="display: flex; flex-direction: column; gap: 12px;">
+            ${question.options.map((option, index) => `
+              <button 
+                onclick="selectAnswer(${index})" 
+                class="quiz-option" 
+                data-index="${index}"
+                style="
+                  padding: 16px 20px;
+                  border: 2px solid rgba(255, 255, 255, 0.2);
+                  border-radius: 12px;
+                  background: rgba(255, 255, 255, 0.05);
+                  color: ${config.text_color || defaultConfig.text_color};
+                  font-size: 16px;
+                  cursor: pointer;
+                  text-align: left;
+                  transition: all 0.3s;
+                  font-weight: 500;
+                "
+              >${option}</button>
+            `).join('')}
+          </div>
         </div>
       `;
-
-      document.getElementById('panelContent').innerHTML = html;
-
-      document.getElementById('doneBtn').addEventListener('click', () => {
-        document.getElementById('overlay').classList.remove('show');
-      });
+      
+      document.getElementById('panel-content').innerHTML = quizHTML;
+      
+      const completeBtn = document.getElementById('complete-btn');
+      completeBtn.textContent = 'Next Question';
+      completeBtn.style.display = 'none';
     }
 
-    document.getElementById('closeBtn').addEventListener('click', () => {
-      document.getElementById('overlay').classList.remove('show');
-    });
-
-    document.getElementById('overlay').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) {
-        document.getElementById('overlay').classList.remove('show');
+    function selectAnswer(answerIndex) {
+      if (!currentLesson || currentQuizIndex >= currentLesson.quiz.length) return;
+      
+      const question = currentLesson.quiz[currentQuizIndex];
+      const isCorrect = answerIndex === question.correct;
+      quizAnswers.push({ questionIndex: currentQuizIndex, answer: answerIndex, correct: isCorrect });
+      
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      const options = document.querySelectorAll('.quiz-option');
+      
+      options.forEach((option, index) => {
+        option.style.pointerEvents = 'none';
+        if (index === question.correct) {
+          option.style.borderColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+          option.style.backgroundColor = `${config.secondary_action_color || defaultConfig.secondary_action_color}33`;
+        } else if (index === answerIndex && !isCorrect) {
+          option.style.borderColor = '#ef4444';
+          option.style.backgroundColor = '#ef444433';
+        }
+      });
+      
+      const completeBtn = document.getElementById('complete-btn');
+      completeBtn.style.display = 'block';
+      
+      if (currentQuizIndex < currentLesson.quiz.length - 1) {
+        completeBtn.textContent = 'Next Question';
+        completeBtn.onclick = nextQuestion;
+      } else {
+        completeBtn.textContent = 'View Results';
+        completeBtn.onclick = showQuizResults;
       }
-    });
+    }
 
-    document.getElementById('startButton').addEventListener('click', () => {
-      document.getElementById('sectionTitle').scrollIntoView({ behavior: 'smooth' });
-    });
+    function nextQuestion() {
+      currentQuizIndex++;
+      showQuiz();
+    }
 
-    async function init() {
-      // Initialize Element SDK first
-      if (window.elementSdk) {
-        window.elementSdk.init({
-          defaultConfig,
-          onConfigChange,
-          mapToCapabilities: (config) => ({
-            recolorables: [
-              {
-                get: () => config.background_color || defaultConfig.background_color,
-                set: (value) => {
-                  config.background_color = value;
-                  window.elementSdk.setConfig({ background_color: value });
-                }
-              },
-              {
-                get: () => config.surface_color || defaultConfig.surface_color,
-                set: (value) => {
-                  config.surface_color = value;
-                  window.elementSdk.setConfig({ surface_color: value });
-                }
-              },
-              {
-                get: () => config.text_color || defaultConfig.text_color,
-                set: (value) => {
-                  config.text_color = value;
-                  window.elementSdk.setConfig({ text_color: value });
-                }
-              },
-              {
-                get: () => config.primary_action_color || defaultConfig.primary_action_color,
-                set: (value) => {
-                  config.primary_action_color = value;
-                  window.elementSdk.setConfig({ primary_action_color: value });
-                }
-              },
-              {
-                get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
-                set: (value) => {
-                  config.secondary_action_color = value;
-                  window.elementSdk.setConfig({ secondary_action_color: value });
-                }
-              }
-            ],
-            borderables: [],
-            fontEditable: {
-              get: () => config.font_family || defaultConfig.font_family,
-              set: (value) => {
-                config.font_family = value;
-                window.elementSdk.setConfig({ font_family: value });
-              }
-            },
-            fontSizeable: {
-              get: () => config.font_size || defaultConfig.font_size,
-              set: (value) => {
-                config.font_size = value;
-                window.elementSdk.setConfig({ font_size: value });
-              }
-            }
-          }),
-          mapToEditPanelValues: (config) => new Map([
-            ['main_title', config.main_title || defaultConfig.main_title],
-            ['subtitle', config.subtitle || defaultConfig.subtitle],
-            ['cta_button', config.cta_button || defaultConfig.cta_button]
-          ])
-        });
+    function showQuizResults() {
+      const correctCount = quizAnswers.filter(a => a.correct).length;
+      const totalQuestions = currentLesson.quiz.length;
+      const percentage = Math.round((correctCount / totalQuestions) * 100);
+      const passed = percentage >= 70;
+      
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      
+      let resultsHTML = `
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-size: 64px; margin-bottom: 16px;">${passed ? '🎉' : '📚'}</div>
+          <h3 style="font-size: 28px; font-weight: 800; margin-bottom: 12px;">
+            ${passed ? 'Congratulations!' : 'Keep Learning!'}
+          </h3>
+          <p style="font-size: 18px; margin-bottom: 24px; opacity: 0.9;">
+            You scored ${correctCount} out of ${totalQuestions} (${percentage}%)
+          </p>
+          <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+            <div style="font-size: 16px; margin-bottom: 12px; opacity: 0.8;">
+              ${passed ? 
+                'Great job! You\'ve demonstrated understanding of the key concepts.' : 
+                'You need 70% to pass. Review the material and try again!'}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('panel-content').innerHTML = resultsHTML;
+      
+      const completeBtn = document.getElementById('complete-btn');
+      if (passed) {
+        completeBtn.textContent = 'Complete Lesson';
+        completeBtn.onclick = () => markAsComplete();
+        completeBtn.style.backgroundColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      } else {
+        completeBtn.textContent = 'Retake Quiz';
+        completeBtn.onclick = () => {
+          currentQuizIndex = 0;
+          quizAnswers = [];
+          showQuiz();
+        };
       }
+    }
 
-      // Initialize Data SDK
-      if (window.dataSdk) {
-        const result = await window.dataSdk.init(dataHandler);
+    async function markAsComplete() {
+      if (!currentLesson || isUpdating) return;
+
+      const progress = userProgress.find(p => p.lesson_id === currentLesson.id);
+      const isCurrentlyCompleted = progress && progress.completed;
+
+      if (isCurrentlyCompleted) return;
+
+      isUpdating = true;
+      const completeBtn = document.getElementById('complete-btn');
+      completeBtn.classList.add('loading');
+      completeBtn.textContent = 'Saving...';
+
+      if (progress) {
+        progress.completed = true;
+        progress.completed_at = new Date().toISOString();
+        const result = await window.dataSdk.update(progress);
+        
         if (!result.isOk) {
-          console.error('Data SDK init failed');
+          completeBtn.textContent = 'Error - Try Again';
+          completeBtn.classList.remove('loading');
+          isUpdating = false;
+          return;
+        }
+      } else {
+        const result = await window.dataSdk.create({
+          lesson_id: currentLesson.id,
+          completed: true,
+          completed_at: new Date().toISOString()
+        });
+
+        if (!result.isOk) {
+          completeBtn.textContent = 'Error - Try Again';
+          completeBtn.classList.remove('loading');
+          isUpdating = false;
+          return;
         }
       }
 
-      // Ensure courses are rendered immediately
-      updateStats();
-      renderCourses();
+      completeBtn.textContent = '✓ Lesson Completed!';
+      completeBtn.classList.remove('loading');
+      completeBtn.classList.add('completed');
+      isUpdating = false;
+      
+      setTimeout(() => {
+        closeLesson();
+      }, 1500);
     }
 
-    // Run init when page loads
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
+    async function toggleComplete() {
+      if (!currentLesson || isUpdating) return;
+
+      const progress = userProgress.find(p => p.lesson_id === currentLesson.id);
+      const isCurrentlyCompleted = progress && progress.completed;
+
+      if (isCurrentlyCompleted) return;
+
+      if (!showingQuiz) {
+        showQuiz();
+      }
     }
+
+    function scrollToLessons() {
+      document.querySelector('.content-section').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a2dfbd8e6012992',t:'MTc2Mzg3Mjc3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a2e14fef5fb2992',t:'MTc2Mzg3MzgwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
